@@ -5,6 +5,8 @@ import { SequelizeModule } from "@nestjs/sequelize";
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { LessonsModule} from './puples/lessons.module';
 import * as path from 'path'
+import { Ext } from './extantions/ext.model';
+import { ExtModule } from './extantions/ext.module';
 
 
 @Module({
@@ -24,11 +26,12 @@ import * as path from 'path'
             username: 'postgres',
             password: '1',
             database: 'repetitor',
-            models: [Less],
+            models: [Less, Ext],
             autoLoadModels: true,
             
         }),
         LessonsModule,
+        ExtModule
     ]
 })
 export class AppModule {}

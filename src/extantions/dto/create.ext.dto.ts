@@ -1,5 +1,5 @@
 
-export class createLessDto {
+export class createExtDto {
     readonly idYear: number;
     readonly idMonth: number;
     readonly idStartDayWeek: number;
@@ -9,10 +9,7 @@ export class createLessDto {
     readonly subj: string;
     readonly namePup: string;
     readonly cost: number;
+    readonly homework: string;
     readonly isPayed: boolean;
     readonly isDecayed: boolean;
-    readonly decidYear: number;
-    readonly decidMonth: number;
-    readonly decidStartDayWeek: number;
-    readonly decidDay: number;
 }

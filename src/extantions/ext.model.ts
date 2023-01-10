@@ -1,7 +1,7 @@
 
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
-interface LessCreationAttr {
+interface ExtCreationAttr {
     idYear: number;
     idMonth: number;
     idStartDayWeek: number;
@@ -11,16 +11,13 @@ interface LessCreationAttr {
     subj: string;
     namePup: string;
     cost: number;
+    homework: string;
     isPayed: boolean;
     isDecayed: boolean;
-    decidYear: number;
-    decidMonth: number;
-    decidStartDayWeek: number;
-    decidDay: number;
 }
 
-@Table({tableName: 'lessons'})
-export class Less extends Model<Less, LessCreationAttr>{
+@Table({tableName: 'ext'})
+export class Ext extends Model<Ext, ExtCreationAttr>{
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     id: number;
 
@@ -51,22 +48,13 @@ export class Less extends Model<Less, LessCreationAttr>{
     @Column({type: DataType.INTEGER, allowNull: false})
     cost: number;
 
+    @Column({type: DataType.STRING, allowNull: false})
+    homework: string;
+
     @Column({type: DataType.BOOLEAN, allowNull: false})
     isPayed: boolean;
 
     @Column({type: DataType.BOOLEAN, allowNull: false})
     isDecayed: boolean;
-
-    @Column({type: DataType.INTEGER, allowNull: false})
-    decidYear: number;
-
-    @Column({type: DataType.INTEGER, allowNull: false})
-    decidMonth: number;
-
-    @Column({type: DataType.INTEGER, allowNull: false})
-    decidStartDayWeek: number;
-
-    @Column({type: DataType.INTEGER, allowNull: false})
-    decidDay: number;
 
 }

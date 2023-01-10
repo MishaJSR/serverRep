@@ -4,7 +4,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { createLessDto } from './dto/create.lesson.dto';
 
 
-@Controller('lessons')
+@Controller('repeateble')
 export class LessonsController {
     constructor(private lessonsService: LessonsService) {}
 
