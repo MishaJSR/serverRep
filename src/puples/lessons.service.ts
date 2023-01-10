@@ -18,7 +18,11 @@ export class LessonsService {
     async deleteLess(dto: deleteLessDto){
         const follow = await this.lessRepository.destroy({
             where: {
-                id: dto.id_delete
+                idYear: dto.idYear,
+                idMonth: dto.idMonth,
+                idStartDayWeek: dto.idStartDayWeek,
+                idDay: dto.idDay,
+                startTime: dto.startTime
             }
         });
         return follow;

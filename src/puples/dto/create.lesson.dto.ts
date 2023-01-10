@@ -9,7 +9,6 @@ export class createLessDto {
     readonly subj: string;
     readonly namePup: string;
     readonly cost: number;
-    readonly isPayed: boolean;
     readonly isDecayed: boolean;
     readonly decidYear: number;
     readonly decidMonth: number;

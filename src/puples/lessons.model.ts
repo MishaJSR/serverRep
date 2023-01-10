@@ -11,12 +11,7 @@ interface LessCreationAttr {
     subj: string;
     namePup: string;
     cost: number;
-    isPayed: boolean;
     isDecayed: boolean;
-    decidYear: number;
-    decidMonth: number;
-    decidStartDayWeek: number;
-    decidDay: number;
 }
 
 @Table({tableName: 'lessons'})
@@ -52,21 +47,18 @@ export class Less extends Model<Less, LessCreationAttr>{
     cost: number;
 
     @Column({type: DataType.BOOLEAN, allowNull: false})
-    isPayed: boolean;
-
-    @Column({type: DataType.BOOLEAN, allowNull: false})
     isDecayed: boolean;
 
-    @Column({type: DataType.INTEGER, allowNull: false})
+    @Column({type: DataType.INTEGER, allowNull: true, defaultValue: 0})
     decidYear: number;
 
-    @Column({type: DataType.INTEGER, allowNull: false})
+    @Column({type: DataType.INTEGER, allowNull: true, defaultValue: 0})
     decidMonth: number;
 
-    @Column({type: DataType.INTEGER, allowNull: false})
+    @Column({type: DataType.INTEGER, allowNull: true, defaultValue: 0})
     decidStartDayWeek: number;
 
-    @Column({type: DataType.INTEGER, allowNull: false})
+    @Column({type: DataType.INTEGER, allowNull: true, defaultValue: 0})
     decidDay: number;
 
 }

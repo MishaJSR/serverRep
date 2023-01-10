@@ -1,4 +1,8 @@
 
 export class deleteExtDto {
-    readonly id_delete: number;
+    readonly idYear: number;
+    readonly idMonth: number;
+    readonly idStartDayWeek: number;
+    readonly idDay: number;
+    readonly startTime: number;
 }

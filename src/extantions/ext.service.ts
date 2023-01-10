@@ -10,28 +10,75 @@ export class ExtService {
 
     }
 
-    async createLess(dto: createExtDto){
+    async createExt(dto: createExtDto){
         const follow = await this.extRepository.create(dto);
         return follow;
     }
 
-    async deleteLess(dto: deleteExtDto){
+    async deleteExt(dto: deleteExtDto){
         const follow = await this.extRepository.destroy({
             where: {
-                id: dto.id_delete
+                idYear: dto.idYear,
+                idMonth: dto.idMonth,
+                idStartDayWeek: dto.idStartDayWeek,
+                idDay: dto.idDay,
+                startTime: dto.startTime
             }
         });
         return follow;
     }
 
-    async getAllLess(){
+    
+
+    async getAllExt(){
         const follow = await this.extRepository.findAll({include: {all: true}});
         return follow;
     }
 
 
-    async getLessById(id) {
-        const follow = await this.extRepository.findAll({where: {idYear: id}, include: {all: true}})
-        return follow;
+    async createHome(dto: createExtDto) {
+        let newExt;
+        const ext = await this.extRepository.findOne({ 
+            where: { 
+                idYear: dto.idYear,  idMonth: dto.idMonth,
+                idStartDayWeek: dto.idStartDayWeek,
+                idDay: dto.idDay,
+                startTime: dto.startTime
+            } })
+        if (ext) {
+            ext.homework = dto.homework;
+            await ext.save();
+            return ext
+        }
+        else {
+            newExt = await this.extRepository.create(dto);
+            return newExt
+        }
     }
+
+    async createPay(dto: createExtDto) {
+        let newExt;
+        const ext = await this.extRepository.findOne({ 
+            where: { 
+                idYear: dto.idYear,  idMonth: dto.idMonth,
+                idStartDayWeek: dto.idStartDayWeek,
+                idDay: dto.idDay,
+                startTime: dto.startTime
+            } })
+        if (ext) {
+            ext.isPayed = dto.isPayed;
+            await ext.save();
+            return ext
+        }
+        else {
+            newExt = await this.extRepository.create(dto);
+            return newExt
+        }
+        
+    }
+
+
 }
+
+
+

@@ -10,21 +10,27 @@ export class ExtController {
 
     @Post()
     createUserInfo(@Body() userDto: createExtDto){
-        return this.extService.createLess(userDto)
+        return this.extService.createExt(userDto)
+    }
+
+    @Post('/homework')
+    createHomework(@Body() createHomeDto: createExtDto){
+        return this.extService.createHome(createHomeDto)
+    }
+
+    @Post('/payed')
+    createPayed(@Body() createPayDto: createExtDto){
+        return this.extService.createPay(createPayDto)
     }
 
     @Post('/delete')
     deleteUserInfo(@Body() deleteDto: deleteExtDto){
-        return this.extService.deleteLess(deleteDto)
+        return this.extService.deleteExt(deleteDto)
     }
 
     @Get()
     getAllInfo() {
-        return this.extService.getAllLess()
+        return this.extService.getAllExt()
     }
 
-    @Get('/:id')
-    getByValue(@Param('id') id: number) {
-        return this.extService.getLessById(id);
-    }
 }
