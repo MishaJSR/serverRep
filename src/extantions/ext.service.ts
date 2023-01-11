@@ -35,45 +35,49 @@ export class ExtService {
         return follow;
     }
 
-
-    async createHome(dto: createExtDto) {
+    async createReduct(dto: createExtDto) {
         let newExt;
-        const ext = await this.extRepository.findOne({ 
-            where: { 
-                idYear: dto.idYear,  idMonth: dto.idMonth,
-                idStartDayWeek: dto.idStartDayWeek,
-                idDay: dto.idDay,
-                startTime: dto.startTime
-            } })
-        if (ext) {
-            ext.homework = dto.homework;
-            await ext.save();
-            return ext
-        }
-        else {
-            newExt = await this.extRepository.create(dto);
-            return newExt
-        }
-    }
+            newExt = await this.extRepository.findOne({ 
+                where: { 
+                    idYear: dto.idYear,  
+                    idMonth: dto.idMonth,
+                    idStartDayWeek: dto.idStartDayWeek,
+                    idDay: dto.idDay,
+                    startTime: dto.startTime
+                } })
+                if (newExt) {
+                    newExt.idYear = dto.idYear;
+                    newExt.idMonth = dto.idMonth;
+                    newExt.idStartDayWeek = dto.idStartDayWeek;
+                    newExt.idDay = dto.idDay;
+                    newExt.startTime = dto.startTime;
+                    newExt.durationTime = dto.durationTime;
+                    newExt.subj = dto.subj;
+                    newExt.namePup = dto.namePup;
+                    newExt.cost = dto.cost;
+                    newExt.homework = dto.homework;
+                    newExt.isPayed = dto.isPayed;
+                    newExt.isDecayed = dto.isDecayed;
+                    await newExt.save();
+                    return newExt
 
-    async createPay(dto: createExtDto) {
-        let newExt;
-        const ext = await this.extRepository.findOne({ 
-            where: { 
-                idYear: dto.idYear,  idMonth: dto.idMonth,
-                idStartDayWeek: dto.idStartDayWeek,
-                idDay: dto.idDay,
-                startTime: dto.startTime
-            } })
-        if (ext) {
-            ext.isPayed = dto.isPayed;
-            await ext.save();
-            return ext
-        }
-        else {
-            newExt = await this.extRepository.create(dto);
-            return newExt
-        }
+                } else {
+                    newExt = await this.extRepository.create({
+                        idYear: dto.idYear,
+                        idMonth: dto.idMonth,
+                        idStartDayWeek: dto.idStartDayWeek,
+                        idDay: dto.idDay,
+                        startTime: dto.startTime,
+                        durationTime: dto.durationTime,
+                        subj: dto.subj,
+                        namePup: dto.namePup,
+                        cost: dto.cost,
+                        homework: dto.homework,
+                        isPayed: dto.isPayed,
+                        isDecayed: dto.isDecayed
+                    });
+                    return newExt
+                }
         
     }
 

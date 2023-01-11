@@ -13,15 +13,11 @@ export class ExtController {
         return this.extService.createExt(userDto)
     }
 
-    @Post('/homework')
-    createHomework(@Body() createHomeDto: createExtDto){
-        return this.extService.createHome(createHomeDto)
+    @Post('/reduct')
+    createReduct(@Body() createRedDto: createExtDto){
+        return this.extService.createReduct(createRedDto)
     }
 
-    @Post('/payed')
-    createPayed(@Body() createPayDto: createExtDto){
-        return this.extService.createPay(createPayDto)
-    }
 
     @Post('/delete')
     deleteUserInfo(@Body() deleteDto: deleteExtDto){
