@@ -62,20 +62,7 @@ export class ExtService {
                     return newExt
 
                 } else {
-                    newExt = await this.extRepository.create({
-                        idYear: dto.idYear,
-                        idMonth: dto.idMonth,
-                        idStartDayWeek: dto.idStartDayWeek,
-                        idDay: dto.idDay,
-                        startTime: dto.startTime,
-                        durationTime: dto.durationTime,
-                        subj: dto.subj,
-                        namePup: dto.namePup,
-                        cost: dto.cost,
-                        homework: dto.homework,
-                        isPayed: dto.isPayed,
-                        isDecayed: dto.isDecayed
-                    });
+                    newExt = await this.extRepository.create(dto);
                     return newExt
                 }
         
