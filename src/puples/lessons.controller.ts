@@ -1,3 +1,4 @@
+import { createWeekDto } from './dto/create.week.dto';
 import { LessonsService } from './lessons.service';
 import { deleteLessDto } from './dto/delete.lesson.dto';
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
@@ -11,6 +12,11 @@ export class LessonsController {
     @Post()
     createUserInfo(@Body() userDto: createLessDto){
         return this.lessonsService.createLess(userDto)
+    }
+
+    @Post('/getWeek')
+    getWeek(@Body() createWeekDto: createWeekDto){
+        return this.lessonsService.getWeek(createWeekDto)
     }
 
     @Post('/delete')
