@@ -1,3 +1,4 @@
+import { createGetWeekDto } from './dto/create.getWeek.dto';
 import { ExtService } from './ext.service';
 import { deleteExtDto } from './dto/delete.ext.dto';
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
@@ -11,6 +12,11 @@ export class ExtController {
     @Post()
     createUserInfo(@Body() userDto: createExtDto){
         return this.extService.createExt(userDto)
+    }
+
+    @Post('/getWeek')
+    getWeek(@Body() createWeekDto: createGetWeekDto){
+        return this.extService.getWeek(createWeekDto)
     }
 
     @Post('/reduct')

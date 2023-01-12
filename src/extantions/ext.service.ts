@@ -1,3 +1,4 @@
+import { createGetWeekDto } from './dto/create.getWeek.dto';
 import { deleteExtDto } from './dto/delete.ext.dto';
 import { createExtDto } from './dto/create.ext.dto';
 import { Injectable } from '@nestjs/common';
@@ -34,6 +35,21 @@ export class ExtService {
         const follow = await this.extRepository.findAll({include: {all: true}});
         return follow;
     }
+
+    async getWeek(dto: createGetWeekDto){
+        const ext = await this.extRepository.findAll({
+            where: {
+                idYear: dto.idYear,
+                idMonth: dto.idMonth,
+                idStartDayWeek: dto.idStartDayWeek,
+                isDecayed: false
+                
+            }
+        });
+        return ext;
+    }
+
+    
 
     async createReduct(dto: createExtDto) {
         let newExt;

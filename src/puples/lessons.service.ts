@@ -1,3 +1,4 @@
+import { createWeekDto } from './dto/create.week.dto';
 import { deleteLessDto } from './dto/delete.lesson.dto';
 import { createLessDto } from './dto/create.lesson.dto';
 import { Injectable } from '@nestjs/common';
@@ -13,6 +14,19 @@ export class LessonsService {
     async createLess(dto: createLessDto){
         const follow = await this.lessRepository.create(dto);
         return follow;
+    }
+
+    async getWeek(dto: createWeekDto){
+        const less = await this.lessRepository.findAll({
+            where: {
+                idYear: dto.idYear,
+                idMonth: dto.idMonth,
+                idStartDayWeek: dto.idStartDayWeek,
+                isDecayed: false
+                
+            }
+        });
+        return less;
     }
 
     async deleteLess(dto: deleteLessDto){
