@@ -16,12 +16,9 @@ export class LessonsService {
         return follow;
     }
 
-    async getWeek(dto: createWeekDto){
+    async getWeek(){
         const less = await this.lessRepository.findAll({
             where: {
-                idYear: dto.idYear,
-                idMonth: dto.idMonth,
-                idStartDayWeek: dto.idStartDayWeek,
                 isDecayed: false
                 
             }

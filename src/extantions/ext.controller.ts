@@ -19,6 +19,11 @@ export class ExtController {
         return this.extService.getWeek(createWeekDto)
     }
 
+    @Post('/getWeekDecayed')
+    getWeekDec(@Body() createWeekDto: createGetWeekDto){
+        return this.extService.getWeekDec(createWeekDto)
+    }
+
     @Post('/reduct')
     createReduct(@Body() createRedDto: createExtDto){
         return this.extService.createReduct(createRedDto)

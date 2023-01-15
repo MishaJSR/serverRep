@@ -14,9 +14,9 @@ export class LessonsController {
         return this.lessonsService.createLess(userDto)
     }
 
-    @Post('/getWeek')
-    getWeek(@Body() createWeekDto: createWeekDto){
-        return this.lessonsService.getWeek(createWeekDto)
+    @Get('/getWeek')
+    getWeek(){
+        return this.lessonsService.getWeek()
     }
 
     @Post('/delete')

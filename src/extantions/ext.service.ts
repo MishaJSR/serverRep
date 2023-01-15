@@ -49,6 +49,18 @@ export class ExtService {
         return ext;
     }
 
+    async getWeekDec(dto: createGetWeekDto){
+        const ext = await this.extRepository.findAll({
+            where: {
+                idYear: dto.idYear,
+                idMonth: dto.idMonth,
+                idStartDayWeek: dto.idStartDayWeek,
+                isDecayed: true
+            }
+        });
+        return ext;
+    }
+
     
 
     async createReduct(dto: createExtDto) {
