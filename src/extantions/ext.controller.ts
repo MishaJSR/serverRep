@@ -1,8 +1,11 @@
+import { createReductByIdtDto } from './dto/create.reductById.dto';
 import { createGetWeekDto } from './dto/create.getWeek.dto';
 import { ExtService } from './ext.service';
 import { deleteExtDto } from './dto/delete.ext.dto';
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { createExtDto } from './dto/create.ext.dto';
+import { createDecDto } from './dto/create.decay.dto';
+import { createCheckIsReadDto } from './dto/create.checkIsRead.dto';
 
 
 @Controller('extentions')
@@ -19,6 +22,11 @@ export class ExtController {
         return this.extService.getWeek(createWeekDto)
     }
 
+    @Post('/decayID')
+    decayById(@Body() createWeekDto: createDecDto){
+        return this.extService.decayById(createWeekDto)
+    }
+
     @Post('/getWeekDecayed')
     getWeekDec(@Body() createWeekDto: createGetWeekDto){
         return this.extService.getWeekDec(createWeekDto)
@@ -28,6 +36,20 @@ export class ExtController {
     createReduct(@Body() createRedDto: createExtDto){
         return this.extService.createReduct(createRedDto)
     }
+
+    @Post('/redcutByID')
+    createReductById(@Body() createRedDto: createReductByIdtDto){
+        return this.extService.createReductById(createRedDto)
+    }
+
+    @Post('/checkIsRead')
+    checkIsRead(@Body() createRedDto: createCheckIsReadDto){
+        return this.extService.checkIsRead(createRedDto)
+    }
+
+    
+
+    
 
 
     @Post('/delete')
