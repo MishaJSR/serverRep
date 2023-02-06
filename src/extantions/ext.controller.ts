@@ -37,7 +37,7 @@ export class ExtController {
         return this.extService.createReduct(createRedDto)
     }
 
-    @Post('/redcutByID')
+    @Post('/reductByID')
     createReductById(@Body() createRedDto: createReductByIdtDto){
         return this.extService.createReductById(createRedDto)
     }
